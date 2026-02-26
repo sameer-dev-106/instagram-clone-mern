@@ -1,13 +1,14 @@
-# Instagram Clone Fullstack
+# Instagram Clone MERN
 
 A fullstack Instagram clone built using Node.js, Express, MongoDB and React.
 
 ## Project Structure
 
 Backend
-- Express server
-- MongoDB connection
-- JWT authentication
+- Express server setup
+- MVC architecture (Routes + Controllers + Models)
+- MongoDB database connection
+- JWT based authentication
 - User register and login APIs
 
 Frontend
@@ -19,7 +20,19 @@ Backend
 - Node.js
 - Express.js
 - MongoDB
-- JWT
+- Mongoose
+- JSON Web Token (JWT)
+
+## Features Implemented
+
+- User registration
+- User login
+- Password hashing
+- JWT authentication with cookies
+- Unique username and email validation
+- Default profile image support
 
 ## Status
-Backend authentication system in progress.
+
+Backend authentication system completed.
+Project under active development.
