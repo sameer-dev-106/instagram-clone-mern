@@ -1,23 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap');
 
-// Colors
+// Auth Colors
 $primary:        #9169ef;
-$primary-light:  #7B4FFF;
-$lavender:       #B19EEF;
-$pink:           #FF9FFC;
-$bg-deep:        #07071a;
-$bg-dark:        #000000;
-$bg-card:        #0f0f2a;
+$primary-light:  #b48fff;
+$primary-glow:   rgba(145, 105, 239, 0.3);
+$lavender:       #c4b5fd;
+$pink:           #f472b6;
+$pink-glow:      rgba(244, 114, 182, 0.25);
+
+$bg-deep:        #06061a;
+$bg-dark:        #08081f;
+$bg-panel:       #0d0d28;
+$bg-card:        #12123a;
 $border:         rgba(255, 255, 255, 0.08);
-$border-focus:   rgba(3, 3, 3, 0.7);
-$text-white:     #ffffff;
-$text-muted:     rgba(177, 158, 239, 0.6);
-$text-faint:     rgba(177, 158, 239, 0.35);
+$border-focus:   rgba(145, 105, 239, 0.5);
+$text-white:     #f0eeff;
+$text-muted:     rgba(196, 181, 253, 0.6);
+$text-faint:     rgba(196, 181, 253, 0.3);
 
-// Typography
-$font:           'Geist', system-ui, sans-serif;
-$font-serif:     Georgia, 'Times New Roman', serif;
+$font:           'Plus Jakarta Sans', system-ui, sans-serif;
+$font-serif:     'DM Serif Display', Georgia, serif;
 
-// Transitions
 $transition:     all 0.2s ease;
 $transition-slow: all 0.4s ease;
