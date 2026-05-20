@@ -1,45 +1,15 @@
 @use "../../../styles/assets/variables" as *;
 @use "../../../styles/assets/mixins" as *;
 
-
 .profile-page {
     width: 100%;
-    
-    @include flex-center;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 1rem;
-}
-
-::-webkit-scrollbar {
-    display: none;
+    min-height: 100%;
 }
 
 .profile-page-section {
-
-    padding: 0 1rem;
-
-    width: 100dvw;
-    height: 80dvh;
-
-    @include flex-center;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    gap: 1rem;
-
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-
-    .profile-header,
-    .profile-stats,
-    .profile-posts {
-        width: 100%;
-        max-width: 700px;
-        @include glass-effect;
-        border-radius: $radius-md;
-    }
-    .profile-posts {
-        max-width: 900px;
-    }
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    @include flex-column(0.75rem);
 }
