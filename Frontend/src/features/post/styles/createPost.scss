@@ -2,48 +2,45 @@
 @use "../../../styles/assets/mixins" as *;
 
 .create-post-container {
-    @include flex-center;
-    flex-direction: column;
-    gap: 2rem;
-    
-    @include glass-effect;
-    @include soft-shadow;
-    
-    animation: fadeIn 0.6s ease;
-    
-    width: 90%;
-    max-width: 420px;
-    padding: 1.5rem;
-    margin: auto;    
-
-    border-radius: $radius-md;
+    @include flex-column(1.25rem);
+    align-items: center;
+    @include glass-card;
+    border-radius: $radius-sm;
+    padding: 1.75rem 1.25rem;
+    width: 100%;
+    max-width: 440px;
+    margin: 2rem auto;
+    animation: fadeUp 0.4s ease;
 
     h2 {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: 1.7rem;
+        font-weight: 400;
         color: $primary;
-        font-size: 1.8rem;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.3px;
+        text-align: left;
     }
+
 
     form {
         width: 100%;
-        @include flex-center;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
+        @include flex-column(1.5rem);
 
         .upload-box {
             width: 100%;
-            height: 220px;
-
-            border-radius: $radius-md;
-
+            height: 200px;
+            border-radius: $radius-sm;
             @include flex-center;
-
             @include glass-effect;
-            @include soft-shadow;
-
+            border: 1.5px dashed rgba(167,139,250,0.25);
             overflow: hidden;
             cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                border-color: rgba(255, 46, 99, 0.4);
+                background: rgba(255, 46, 99, 0.04);
+            }
         }
 
         .upload-box img {
@@ -52,85 +49,47 @@
             object-fit: cover;
         }
 
-        .upload-box img:hover {
-            opacity: 0.8;
-        }
-
         .placeholder {
             text-align: center;
-            color: #ff2e63;
+            @include flex-column(0.5rem);
+            align-items: center;
+            color: $primary;
+
+            svg { width: 32px; height: 32px; opacity: 0.8; }
+            p { font-size: 0.875rem; font-weight: 500; opacity: 0.8; }
         }
 
-        input,
         textarea {
             @include input-style;
-            box-shadow: $input-box-shadow;
+            resize: none;
+            min-height: 80px;
+            border-radius: $radius-sm;
+            font-family: inherit;
+            line-height: 1.5;
         }
 
-        input:focus,
-        textarea:focus {
-            border: 1px solid #ff2e63;
-            box-shadow: 0 0 10px rgba(255, 46, 99, 0.4);
-        }
-
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus {
-            @include autofill-fix;
-        }
-
-        button {
+        button[type="submit"] {
             @include primary-btn;
+            padding: 0.85rem;
+            font-size: 1rem;
+            border-radius: $radius-sm;
 
-            position: sticky;
-            bottom: 20px;
-
-            &:hover,
-            &:focus,
-            &:active {
-                transform: translateY(2px);
-                box-shadow: 0 0 20px rgba(255, 46, 99, 0.3);
-            }
-
-            &:active {
-                transform: scale(0.98);
-            }
+            &:disabled { opacity: 0.5; }
         }
 
         .error {
-            color: #ff0022;
-            font-size: 0.9rem;
+            color: #f87171;
+            font-size: 0.85rem;
             text-align: center;
-            animation: shacking 0.3s ease-in-out infinite alternate;
+            padding: 0.5rem;
+            border-radius: $radius-sm;
+            background: rgba(248, 113, 113, 0.08);
+            border: 1px solid rgba(248, 113, 113, 0.2);
         }
     }
-
-    .toggleAuthForm {
-        color: #ff0022;
-        cursor: pointer;
-        text-decoration: none;
-    }
 }
 
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes shacking {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(5px);
-    }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
