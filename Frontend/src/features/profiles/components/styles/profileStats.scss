@@ -1,29 +1,43 @@
 @use "../../../../styles/assets/variables" as *;
 @use "../../../../styles/assets/mixins" as *;
 
-
 .profile-stats {
-    @include flex-center;
-    gap: 1rem;
-    justify-content: space-around;
+    @include glass-card;
+    border-radius: $radius-sm;
     padding: 1rem;
+    @include flex-center;
+    justify-content: space-around;
+    gap: 0.5rem;
 
     .stat {
+        flex: 1;
         text-align: center;
-        padding: 0.5rem 1rem;
-        @include glass-effect;
-        box-shadow: $shadow;
-        border-radius: $radius-md;
+        padding: 0.6rem 0.5rem;
+        border-radius: $radius-sm;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: all 0.2s ease;
+        cursor: default;
+
+        &:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(167,139,250,0.15);
+        }
 
         .number {
-            font-size: 1.25rem;
-            font-weight: bold;
+            font-size: 1.35rem;
+            font-weight: 700;
             color: $primary;
+            line-height: 1;
+            margin-bottom: 4px;
         }
 
         .label {
-            font-size: 0.875rem;
+            font-size: 0.72rem;
             color: $secondary;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
         }
     }
 }
