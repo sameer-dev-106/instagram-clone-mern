@@ -6,61 +6,76 @@
     justify-content: center;
 }
 
-@mixin flex-between {
+@mixin oauth-btn {
+    flex: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: $text-white;
+    font-family: $font;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+    letter-spacing: 0.2px;
 
-@mixin glass {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid $border;
-    backdrop-filter: blur(12px);
+    &:hover {
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.18);
+    }
 }
 
 @mixin input-base {
     width: 100%;
-    padding: 12px 16px;
+    padding: 13px 16px;
     border-radius: 12px;
-    font-size: 14px;
+    border: 1px solid $border;
+    background: rgba(255,255,255,0.04);
+    color: $text-white;
     font-family: $font;
+    font-size: 14px;
     outline: none;
     transition: $transition;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid $border;
-    color: #e2e8f0;
 
     &::placeholder {
-        color: rgba(177, 158, 239, 0.25);
+        color: $text-faint;
     }
 
     &:focus {
         border-color: $border-focus;
-        box-shadow: 0 0 0 3px rgba(82, 39, 255, 0.12);
+        background: rgba(145, 105, 239, 0.06);
+        box-shadow: 0 0 0 3px $primary-glow;
     }
 }
 
 @mixin btn-primary {
     width: 100%;
-    padding: 13px 20px;
+    padding: 14px 24px;
     border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: $font;
-    color: white;
     border: none;
+    background: linear-gradient(135deg, $primary 0%, #7c3aed 100%);
+    color: white;
+    font-family: $font;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
-    box-shadow: 0 4px 24px rgba(82, 39, 255, 0.35);
-    transition: $transition;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transition: $transition;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 24px $primary-glow;
 
     &:hover:not(:disabled) {
         transform: translateY(-1px);
-        box-shadow: 0 8px 32px rgba(82, 39, 255, 0.45);
+        box-shadow: 0 8px 32px $primary-glow;
+        background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
     }
 
     &:active:not(:disabled) {
@@ -70,34 +85,5 @@
     &:disabled {
         opacity: 0.6;
         cursor: not-allowed;
-        background: rgba(82, 39, 255, 0.5);
-    }
-}
-
-@mixin oauth-btn {
-    flex: 1;
-    padding: 11px 16px;
-    border-radius: 12px;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: $font;
-    color: #e2e8f0;
-    border: 1px solid $border;
-    background: rgba(255, 255, 255, 0.04);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: $transition;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(255, 255, 255, 0.15);
-        transform: translateY(-1px);
-    }
-
-    &:active {
-        transform: translateY(0);
     }
 }
