@@ -1,24 +1,162 @@
 @use "./auth.variables.scss" as *;
 @use "./auth.mixins.scss" as *;
 
+/* ─── Page Shell ─── */
 .authPage {
     display: flex;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
     background: $bg-deep;
     font-family: $font;
+    overflow: hidden;
 }
 
+/* ─── LEFT PANEL (desktop branding) ─── */
+.leftPanel {
+    display: none;
+    width: 45%;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #130d2e 0%, #0f0a25 40%, #0d1535 100%);
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 56px;
+
+    @media (min-width: 1024px) {
+        display: flex;
+    }
+
+    /* Decorative orbs */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -120px;
+        left: -80px;
+        width: 480px;
+        height: 480px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba($primary, 0.18) 0%, transparent 65%);
+        pointer-events: none;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        right: -60px;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba($pink, 0.12) 0%, transparent 65%);
+        pointer-events: none;
+    }
+}
+
+.leftLogo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 64px;
+    position: relative;
+    z-index: 1;
+
+    img {
+        height: 44px;
+        width: auto;
+    }
+}
+
+.leftHeadline {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 28px;
+
+    h2 {
+        font-family: $font-serif;
+        font-size: 44px;
+        font-weight: 400;
+        color: $text-white;
+        line-height: 1.15;
+        margin: 0 0 16px;
+        letter-spacing: -0.5px;
+
+        span {
+            background: linear-gradient(135deg, $primary-light, $pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+
+    p {
+        font-size: 15px;
+        color: $text-muted;
+        line-height: 1.7;
+        max-width: 320px;
+    }
+}
+
+.leftFeatures {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    z-index: 1;
+    margin-top: 8px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+
+    .featureIcon {
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+
+    .featureText {
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: $text-white;
+            margin: 0 0 3px;
+        }
+
+        p {
+            font-size: 12px;
+            color: $text-muted;
+            margin: 0;
+            line-height: 1.5;
+        }
+    }
+}
+
+.leftDivider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, $primary, transparent);
+    margin: 40px 0 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── RIGHT PANEL (form) ─── */
 .rightPanel {
     flex: 1;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 24px;
+    padding: 48px 24px;
     overflow-y: auto;
-    overflow-x: hidden;
     background: $bg-dark;
     position: relative;
 
@@ -26,50 +164,55 @@
         content: '';
         position: absolute;
         top: -100px;
-        right: -100px;
-        width: 400px;
-        height: 400px;
+        right: -80px;
+        width: 360px;
+        height: 360px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba($primary, 0.06) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba($primary, 0.05) 0%, transparent 70%);
         pointer-events: none;
     }
 }
 
-// Mobile logo — visible only when left panel is hidden
+/* Mobile logo — visible when left panel hidden */
 .mobileLogo {
-    display: none;
+    display: flex;
     position: absolute;
-    top: 4px;
-    // right: 24px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     align-items: center;
-    gap: 10px;
 
-    @media (max-width: 1024px) {
-        display: flex;
+    @media (min-width: 1024px) {
+        display: none;
     }
 
     img {
-        height: 68px;
+        height: 48px;
         width: auto;
     }
 }
 
 .formWrapper {
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 1024px) {
+        margin-top: 48px;
+    }
 }
 
+/* ─── Heading ─── */
 .heading {
     margin-bottom: 32px;
 
     h1 {
         font-family: $font-serif;
-        font-size: 32px;
-        font-weight: 700;
+        font-size: 30px;
+        font-weight: 400;
         color: $text-white;
-        letter-spacing: -0.5px;
+        letter-spacing: -0.3px;
         line-height: 1.2;
         margin: 0 0 8px;
     }
@@ -78,12 +221,14 @@
         font-size: 14px;
         color: $text-muted;
         margin: 0;
+        line-height: 1.5;
     }
 }
 
+/* ─── OAuth ─── */
 .oauthRow {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 24px;
 }
 
@@ -92,10 +237,11 @@
     @include oauth-btn;
 }
 
+/* ─── Divider ─── */
 .divider {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     margin-bottom: 24px;
 
     &::before,
@@ -103,32 +249,35 @@
         content: '';
         flex: 1;
         height: 1px;
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.07);
     }
 
     span {
-        font-size: 12px;
-        color: rgba(177, 158, 239, 0.4);
+        font-size: 11px;
+        color: $text-faint;
         white-space: nowrap;
+        letter-spacing: 0.3px;
     }
 }
 
+/* ─── Form ─── */
 .form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
 }
 
 .field {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 7px;
 
     label {
         font-size: 12px;
-        font-weight: 500;
-        color: rgba(177, 158, 239, 0.7);
-        letter-spacing: 0.2px;
+        font-weight: 600;
+        color: rgba(196, 181, 253, 0.8);
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
     }
 
     input {
@@ -140,18 +289,18 @@
     position: relative;
 
     input {
-        padding-right: 44px;
+        padding-right: 46px;
     }
 
     .eyeBtn {
         position: absolute;
-        right: 12px;
+        right: 14px;
         top: 50%;
         transform: translateY(-50%);
         background: none;
         border: none;
         cursor: pointer;
-        color: rgba(177, 158, 239, 0.4);
+        color: $text-faint;
         @include flex-center;
         padding: 4px;
         transition: $transition;
@@ -162,56 +311,58 @@
     }
 }
 
+/* ─── Password Strength ─── */
 .strengthBar {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     margin-top: 8px;
 
     .bar {
         flex: 1;
         height: 3px;
         border-radius: 99px;
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.07);
         transition: background 0.3s ease;
 
-        &.weak { background: #ef4444; }
-        &.fair { background: #f59e0b; }
-        &.good { background: $lavender; }
-        &.strong { background: $primary; }
+        &.weak   { background: #f87171; }
+        &.fair   { background: #fbbf24; }
+        &.good   { background: $lavender; }
+        &.strong { background: $primary-light; }
     }
 }
 
 .strengthLabel {
     font-size: 11px;
     margin-top: 4px;
+    font-weight: 500;
     transition: color 0.3s ease;
 
-    &.weak { color: #ef4444; }
-    &.fair { color: #f59e0b; }
-    &.good { color: $lavender;}
+    &.weak   { color: #f87171; }
+    &.fair   { color: #fbbf24; }
+    &.good   { color: $lavender; }
     &.strong { color: $primary-light; }
 }
 
+/* ─── Forgot row ─── */
 .forgotRow {
     display: flex;
     justify-content: flex-end;
-    margin-top: -8px;
+    margin-top: -6px;
 
     button {
         background: none;
         border: none;
         font-size: 12px;
-        color: rgba(177, 158, 239, 0.5);
+        color: $text-faint;
         cursor: pointer;
         font-family: $font;
         transition: $transition;
 
-        &:hover {
-            color: $lavender;
-        }
+        &:hover { color: $lavender; }
     }
 }
 
+/* ─── Submit button ─── */
 .submitBtn {
     @include btn-primary;
     margin-top: 4px;
@@ -226,21 +377,20 @@
     }
 }
 
+/* ─── Footer links ─── */
 .footerLink {
     text-align: center;
     font-size: 14px;
-    color: rgba(177, 158, 239, 0.5);
+    color: $text-muted;
     margin-top: 24px;
 
     a {
         color: $lavender;
-        font-weight: 500;
+        font-weight: 600;
         text-decoration: none;
         transition: $transition;
 
-        &:hover {
-            color: $pink;
-        }
+        &:hover { color: $pink; }
     }
 }
 
@@ -249,24 +399,23 @@
     font-size: 11px;
     color: $text-faint;
     margin-top: 16px;
-    line-height: 1.6;
+    line-height: 1.7;
 
     span {
         text-decoration: underline;
         cursor: pointer;
         transition: $transition;
 
-        &:hover {
-            color: $lavender;
-        }
+        &:hover { color: $lavender; }
     }
 }
 
+/* ─── Error ─── */
 .errorMsg {
     font-size: 13px;
-    color: #f87171;
-    background: rgba(248, 113, 113, 0.08);
-    border: 1px solid rgba(248, 113, 113, 0.2);
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
     border-radius: 10px;
     padding: 10px 14px;
     margin: 0;
@@ -274,7 +423,5 @@
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
 }
