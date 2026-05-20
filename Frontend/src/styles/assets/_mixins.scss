@@ -12,45 +12,72 @@
     gap: $gap;
 }
 
-@mixin soft-shadow {
-    box-shadow:
-        inset 0 1px 2px #ffffff50,
-        0 2px 4px #00000030,
-        0 4px 8px #00000015;
-}
-
 @mixin glass-effect {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+@mixin glass-card {
+    background: rgba(15, 12, 40, 0.6);
+    border: 1px solid rgba(167, 139, 250, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+@mixin soft-shadow {
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 2px 8px rgba(0,0,0,0.25);
 }
 
 @mixin input-style {
     width: 100%;
     padding: $space-md;
-    border: none;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: $radius-md;
     color: $text;
     font-size: $text-md;
     outline: none;
-    background: $dark-bule;
+    background: rgba(255,255,255,0.05);
+    transition: all 0.2s ease;
+
+    &::placeholder { color: $faint; }
+    &:focus {
+        border-color: rgba(167,139,250,0.4);
+        background: rgba(167,139,250,0.06);
+        box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
 }
 
-@mixin primary-btn ($space: 1rem) {
+@mixin primary-btn($space: 0.75rem 1.25rem) {
     border: none;
     padding: $space;
     border-radius: $radius-md;
     background: $btn-bg;
     color: $btn-text;
-    font-weight: 500;
-    font-size: $text-lg;
-    transition: 0.2s ease;
+    font-weight: 600;
+    font-size: $text-md;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px $btn-shadow;
+
+    &:hover:not(:disabled) {
+        background: $btn-hover;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px $btn-shadow;
+    }
+
+    &:active:not(:disabled) { transform: scale(0.97); }
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 @mixin autofill-fix {
     -webkit-text-fill-color: $text;
-    -webkit-box-shadow: 0 0 0px 1000px #222 inset, $input-box-shadow;
-    box-shadow: 0 0 0px 1000px #222 inset, $input-box-shadow;
+    -webkit-box-shadow: 0 0 0px 1000px #121230 inset;
+    box-shadow: 0 0 0px 1000px #121230 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
