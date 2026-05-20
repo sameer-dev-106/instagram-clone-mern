@@ -2,14 +2,19 @@
 @use "./assets/mixins" as *;
 
 .app-container {
-    height: 100vh;
+    height: 100dvh;
     @include flex-column;
     background: $bg;
+    position: relative;
+    overflow: hidden;
 }
 
 .content {
-    padding: 0.5rem;
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
+    padding: 0.5rem 0.75rem 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(167,139,250,0.2) transparent;
 }
