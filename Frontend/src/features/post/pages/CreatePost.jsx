@@ -56,6 +56,7 @@ const CreatePost = () => {
   return (
     <section className="create-post-container">
       <h2>Create Post</h2>
+      <p>Share your moments with the world!</p>
 
       <form onSubmit={handleSubmit}>
         <label className="upload-box">
