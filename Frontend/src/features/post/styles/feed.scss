@@ -1,20 +1,19 @@
 @use "../../../styles/assets/variables" as *;
 @use "../../../styles/assets/mixins" as *;
 
-
 .feed-page {
     width: 100%;
+    min-height: 100%;
 }
 
 .feed {
-    max-width: 450px;
+    max-width: 480px;
     margin: 0 auto;
     width: 100%;
+    padding: 0 0 1rem;
 
     .posts {
+        @include flex-column(0.75rem);
         width: 100%;
-        overflow: hidden;
-        @include flex-column(1rem);
-        flex: 1;
     }
 }
