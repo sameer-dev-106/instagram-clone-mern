@@ -3,6 +3,7 @@ const authController = require("../controllers/auth.controller");
 const identifyUser = require("../middlewares/auth.middleware");
 
 const multer = require("multer");
+const { registerValidator, loginValidator } = require("../validators/auth.validator");
 const upload = multer({ storage: multer.memoryStorage() });
 
 const authRouter = express.Router();
@@ -12,7 +13,7 @@ const authRouter = express.Router();
  * @description Register a new user
  * @access Public
  */
-authRouter.post("/register", authController.registerController);
+authRouter.post("/register", registerValidator, authController.registerController);
 
 /**
  * @route /api/auth/update-profile
@@ -26,7 +27,7 @@ authRouter.put("/update-profile", upload.single("profileImage"), identifyUser, a
  * @description Log in a user
  * @access Public
  */
-authRouter.post("/login", authController.loginController);
+authRouter.post("/login", loginValidator, authController.loginController);
 
 /**
  * @route /api/auth/logout
